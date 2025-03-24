@@ -6,6 +6,7 @@ const TipComponent = () => {
   const [selectedTip, setSelectedTip] = useState(null);
   const [tipAmount, setTipAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [totalPeople, setTotalPeople] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -91,6 +92,8 @@ const TipComponent = () => {
               type="number"
               placeholder="Split by ?"
               min="0" 
+              value={totalPeople}
+              onChange={(e) => setTotalPeople(e.target.value)}
               />
             </div>
               
@@ -120,6 +123,7 @@ const TipComponent = () => {
         <div className="bg-[#4b8290] w-100 h-90 rounded-xl flex flex-col items-center justify-center text-2xl font-bold text-[#e287d3] ml-4">
           <h4 className="ml-4">Tip: £{parseFloat(tipAmount).toFixed(2)}</h4>
           <h4 className="ml-4">Total: £{parseFloat(totalAmount).toFixed(2)}</h4>
+          <h4 className="ml-4">Total: £{parseFloat(totalAmount/totalPeople).toFixed(2)}</h4>
         </div>      
       </div>
     </div>  
